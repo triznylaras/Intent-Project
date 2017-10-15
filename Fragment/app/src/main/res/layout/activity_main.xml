@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context="com.example.triznylarasati.fragment.MainActivity">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/fragment_place"
+        android:name="com.example.triznylarasati.fragment.FragmentSatu"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout="@layout/activity_fragment_satu"/>
+
+    <Button
+        android:id="@+id/login_btn"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"
+        android:text="Login"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>
