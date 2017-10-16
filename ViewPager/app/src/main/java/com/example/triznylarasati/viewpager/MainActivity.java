@@ -8,73 +8,68 @@ import android.widget.Button;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     ViewPager viewPager ;
-    Button buttonKiri, buttonKanan;
+    Button back_btn, next_btn;
     ViewPagerAdapter viewPagerAdapter ;
-    int page = 0 ;
+    int page = 0 ; //page dimulai dari 0
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //pembuatan nama-nama method
         initObject();
-
         initComponentViews();
-
         initConfigurationView();
-
         initOnImplementsView();
     }
+    //method untuk inisiasi class viewpageradapter
     private void initObject(){
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
     }
 
+    //method untuk pemanggilan id-id
     private void initComponentViews(){
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        buttonKiri = (Button) findViewById(R.id.buttonKiri);
-        buttonKanan = (Button) findViewById(R.id.buttonKanan);
+        back_btn = (Button) findViewById(R.id.back_btn);
+        next_btn = (Button) findViewById(R.id.next_btn);
 
     }
 
+    //method untuk menset adapter viewpager dengan viewpageradapter
     private void initConfigurationView(){
         viewPager.setAdapter(viewPagerAdapter);
     }
 
+    //method untuk menset listener button2 di class ini
     private void initOnImplementsView(){
-        buttonKiri.setOnClickListener(this);
-        buttonKanan.setOnClickListener(this);
+        back_btn.setOnClickListener(this);
+        next_btn.setOnClickListener(this);
     }
+
+    //method untuk
     @Override
     public void onClick(View v) {
 
         switch (v.getId()) {
 
-            case R.id.buttonKiri:
-
+            case R.id.back_btn:
                 page -= 1;
-
                 viewPager.setCurrentItem(page);
-                if (page<=0) {
-                    buttonKiri.setVisibility(Button.INVISIBLE);
+                if (page==0) { //jika ada di page 0 maka button back hilang
+                    back_btn.setVisibility(Button.INVISIBLE);
                 }else{
-                    buttonKiri.setVisibility(Button.VISIBLE);
-                }
-                if (page==4) {
-                    buttonKanan.setVisibility(Button.VISIBLE);
+                    back_btn.setVisibility(Button.VISIBLE); //jika selain itu button back ada
                 }
                 break;
 
-            case R.id.buttonKanan:
+            case R.id.next_btn:
                 page += 1;
                 viewPager.setCurrentItem(page);
-
-                if (page>=ViewPagerAdapter.PAGER_LENGTH) {
-                    buttonKanan.setVisibility(Button.INVISIBLE);
+                if (page==2) { //jika ada di page terakhir maka button next hilang
+                    next_btn.setVisibility(Button.INVISIBLE);
                 }else{
-                    buttonKiri.setVisibility(Button.VISIBLE);
-                }
-                if (page==1) {
-                    buttonKiri.setVisibility(Button.VISIBLE);
+                    next_btn.setVisibility(Button.VISIBLE); //jika selain itu button next ada
                 }
                 break;
 
